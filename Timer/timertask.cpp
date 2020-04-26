@@ -3,6 +3,7 @@
 
 void TimerTask::Update()
 {
+
     if(curr == 0){
         curr = cycle;
         task(param);
