@@ -93,7 +93,7 @@ int Timer::Start()
         return -1;
     }
 
-    params.sched_priority = 10;
+    params.sched_priority = 90;
     err = pthread_attr_setschedparam(&attr, &params);
     if(err != 0){
         /*TODO*/
@@ -133,7 +133,7 @@ void *Timer::Run(void *arg)
         if(err != 0){
             /*TODO*/
         }
-        usleep(100000);
+        usleep(10000);
 
     }
 

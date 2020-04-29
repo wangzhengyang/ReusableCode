@@ -5,7 +5,7 @@
 
 void printfhello(void *arg)
 {
-    std::cout << "hello wangzhengyang" << std::endl;
+    //std::cout << "hello wangzhengyang" << std::endl;
 }
 
 void printfshit(void *arg)

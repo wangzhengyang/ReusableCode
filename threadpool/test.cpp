@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "threadpool.h"
 
-ThreadPool pool(2, 10);
+ThreadPool pool(12, 10);
 
 void process(void *arg)
 {
