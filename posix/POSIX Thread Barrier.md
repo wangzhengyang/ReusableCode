@@ -2,7 +2,9 @@
 
 [toc]
 
-## Initializing a Syncchronization Barrier
+屏障用于多任务同步
+
+## Initializing a Syncchronization Barrier(初始化屏障)
 
 ### Syntax
 
@@ -18,7 +20,7 @@ int pthread_barrier_init(pthread_barrier_t *barrier, const pthread_barrierattr_t
 4. `ENOMEM` means insufficient memory exists to initialize the barrier
 5. `EBUSY` means there was an attempt to destroy a barrier while it is in use
 
-## Waiting for Threads to Synchronize at a Barrier
+## Waiting for Threads to Synchronize at a Barrier(等待线程同步)
 
 ### Syntax
 
@@ -31,7 +33,7 @@ int pthread_barrier_wait(pthread_barrier_t *barrier);
 1. `0` means the call complete successfully
 2. `EINVAL` means the value specified by `barrier` does not refer to an initialized barrier object
 
-## Destroying a Synchronization Barrier
+## Destroying a Synchronization Barrier(销毁屏障)
 
 ### Syntax
 
