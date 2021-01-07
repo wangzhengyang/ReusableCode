@@ -1,0 +1,1 @@
+g++ main.cpp modbus_base.cpp modbus_base.h modbus_factory.cpp modbus_factory.h modbus_master.cpp modbus_master.h modbus_protocol.h modbus_registers.h modbus_registers.cpp modbus_rtu.cpp modbus_rtu.h modbus_rule.h modbus_slave.cpp modbus_slave.h modbus_tcp.cpp modbus_tcp.h modbusprotocol_factory.cpp modbusprotocol_factory.h
