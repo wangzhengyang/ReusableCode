@@ -55,7 +55,7 @@ int main()
     unsigned char buff[2048];
     unsigned short length;
 
-    static int count = 20;
+    static int count = 10;
     while (count >= 0)
     {
         if(count % 5 == 0)
@@ -101,5 +101,16 @@ int main()
         count--;
     }
 
+    unsigned short short_data;
+    modbus_master->GetData(0x03, 1100, short_data);
+    cout << "address 1100 -> data:" << (int)(short_data) << endl;
+    vector<unsigned short> short_data2;
+    modbus_master->GetData(0x03, 1050, 5, short_data2);
+    cout << "address:1050 - address:1054 -> data:";
+    for(int i = 0; i < short_data2.size(); i++)
+    {
+        cout << short_data2[i] << " ";
+    }
+    cout << endl;
     return 0;
 }

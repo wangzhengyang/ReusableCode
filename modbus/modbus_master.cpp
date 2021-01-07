@@ -241,7 +241,7 @@ int Modbus_Master::Rule0x10ToMsg(const Modbus_Rule &rule, std::vector<unsigned c
     {
         for(int i = 0; i < rule.m_regnum; i++)
         {
-            if(i >= rule.m_settingoffset && i <= rule.m_settingoffset + rule.m_settings.size())
+            if((i >= rule.m_settingoffset) && i <= (rule.m_settingoffset + rule.m_settings.size()))
             {
                 setting = rule.m_settings[i - rule.m_settingoffset];
             }else{
@@ -253,7 +253,6 @@ int Modbus_Master::Rule0x10ToMsg(const Modbus_Rule &rule, std::vector<unsigned c
     }
     else
     {
-
         for (int i = 0; i < rule.m_regnum; i++)
         {
             if (i == rule.m_settingoffset)
@@ -352,7 +351,7 @@ int Modbus_Master::UpdateData(const Modbus_Rule &rule, const vector<unsigned cha
         //cout << "dataaddress:" << (int)rule.m_pdata << endl;
         for (int i = 0; i < rule.m_regnum; i++)
         {
-            *(rule.m_pdata + i) = (unsigned short)((data[3 + i << 1] << 8) | (data[4 + i << 1]));
+            *(rule.m_pdata + i) = (unsigned short)((data[3 + (i << 1)] << 8) | (data[4 + (i << 1)]));
         }
     }
     else if (recv_funcode == 0x06)
@@ -384,7 +383,15 @@ int Modbus_Master::UpdateData(const Modbus_Rule &rule, const vector<unsigned cha
             return -1;
         }
 
-        *(rule.m_pdata + rule.m_settingoffset) = rule.m_setting;
+        if(rule.m_update_oneormore)
+        {
+            for(int i = 0; i < rule.m_settings.size(); i++)
+            {
+                *(rule.m_pdata + rule.m_settingoffset + i) = rule.m_settings[i];
+            }
+        }else{
+            *(rule.m_pdata + rule.m_settingoffset) = rule.m_setting;
+        }
     }
 
     return 0;

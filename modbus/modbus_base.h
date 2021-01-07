@@ -31,7 +31,11 @@ public:
     void SetTime(Timer timer) { m_timer = timer; }
     void Mount_RegisterMap(std::shared_ptr<Modbus_Registers> reg) { m_registers = reg;}
     void Mount_Protocol(std::shared_ptr<Modbus_Protocol> pro) { m_protocol = pro; }
-
+    int GetData(unsigned char funcode, unsigned short address, unsigned short &data);
+    int GetData(unsigned char funcode, unsigned short address, short &data);
+    int GetData(unsigned char funcode, unsigned short address, unsigned int &data);
+    int GetData(unsigned char funcode, unsigned short address, int &data);
+    int GetData(unsigned char funcode, unsigned short address, unsigned short regnum, std::vector<unsigned short> &data);
 public:
     virtual int Send(unsigned char *pbuf, unsigned short &len) = 0;
     virtual int Recv(unsigned char *pbuf, unsigned short len) = 0;
@@ -44,6 +48,7 @@ public:
 protected:
     std::shared_ptr<Modbus_Registers> RegistersMap() const { return m_registers; }
     std::shared_ptr<Modbus_Protocol> Protocol() const { return m_protocol; }
+    int DataPointer(unsigned char funcode, unsigned short address, unsigned short regnum, unsigned short **p);
     int UpdateTime();
 
 private:

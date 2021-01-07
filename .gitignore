@@ -9,3 +9,5 @@ modbus/modbus_slave.h.gch
 modbus/modbus_tcp.h.gch
 modbus/modbusprotocol_factory.h.gch
 modbus/a.exe
+modbus/main.cpp
+.vscode/settings.json
